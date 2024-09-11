@@ -1,7 +1,9 @@
 # video-inference
 
-## Model Download
+## Compile YOLOv5 Model TensorRT
 
-Download the yolov5 model from [Google Drive](https://drive.google.com/file/d/1gglIwqxaH2iTvy6lZlXuAcMpd_U0GCUb/view)
-
-Ref: [Crowdhuman YOLOv5](https://github.com/SibiAkkash/yolov5-crowdhuman?tab=readme-ov-file)
+```bash
+git clone https://github.com/ultralytics/yolov5.git
+cd yolov5
+python3 export.py --weights yolov5l.pt --include engine --imgsz 1088 640 --half --device 0
+```
