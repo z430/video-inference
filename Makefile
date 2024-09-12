@@ -1,4 +1,4 @@
-DOCKER_CMD := docker run -it --rm --gpus=all --privileged=true --ipc=host -v $(shell pwd):/app -v /media/hdd/models/docker:/opt/ml/models
+DOCKER_CMD := docker run -it --rm --gpus=all --privileged=true --ipc=host -v /media/ssd/workspace:/app -v /media/hdd/models/docker:/opt/ml/models
 DOCKER_PY_CMD := ${DOCKER_CMD} --entrypoint=python
 DOCKER_NSYS_CMD := ${DOCKER_CMD} --entrypoint=nsys
 PROFILE_CMD := profile -t cuda,cublas,cudnn,nvtx,osrt --force-overwrite=true --delay=2 --duration=30
@@ -45,4 +45,4 @@ sleep:
 
 pipeline: cli.pipeline.png frames_into_python.pipeline.png frames_into_pytorch.pipeline.png
 
-tuning: logs/tuning_baseline.qdrep logs/tuning_postprocess_1.qdrep logs/tuning_postprocess_2.qdrep logs/tuning_batch.qdrep logs/tuning_fp16.qdrep logs/tuning_dtod.qdrep logs/tuning_concurrency.qdrep
+tuning: main.qdrep
