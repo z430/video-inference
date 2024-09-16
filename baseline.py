@@ -7,9 +7,10 @@ from vip.handler import create_input_stream
 from vip.models import YOLOv5
 from vip.utils import nvtx_range
 
+INPUT_STREAM = Path("data/shinjuku-live.mp4")
 
-def main(args):
-    stream = create_input_stream(Path(args.input))
+def main():
+    stream = create_input_stream(INPUT_STREAM)
     engine = YOLOv5()
 
     with alive_bar(max_cols=200) as bar:
@@ -30,15 +31,5 @@ def main(args):
     stream.stop()
 
 
-def parse_args():
-    import argparse
-
-    parser = argparse.ArgumentParser(description="VIP")
-    parser.add_argument("--input", help="Input video file")
-    parser.add_argument("--output", help="Output Result video file")
-    return parser.parse_args()
-
-
 if __name__ == "__main__":
-    args = parse_args()
-    main(args)
+    main()

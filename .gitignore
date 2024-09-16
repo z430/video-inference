@@ -227,3 +227,5 @@ fabric.properties
 
 # PyEnv
 .python-version
+data/
+logs/
